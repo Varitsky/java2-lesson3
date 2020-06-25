@@ -19,7 +19,7 @@ public class Main {
         words();
 
 /**2.:
-*/
+ */
 
 //        YellowPages yellowPages = new YellowPages();
 //
@@ -52,7 +52,7 @@ public class Main {
 //        yellowPages.put(name, phoneNumber);
 //    }
 /**3.:
-*/
+ */
 
         Phonebook yellowPages = new Phonebook();
 
@@ -62,12 +62,12 @@ public class Main {
         yellowPages.add("Лермонтов", 89260000004L);
         yellowPages.add("Пушкин", 89260000033L);
 
-
         String surname = "Пушкин";
         System.out.println("Все номера телефонов для фамилии " + surname + ": " + yellowPages.get(surname));
     }
 
     public static class Phonebook {
+
         private Map<String, HashSet<Long>> yellowPages;
 
         Phonebook() {
@@ -76,22 +76,37 @@ public class Main {
         }
 
         void add(String lastName, Long phone) {
-            HashSet<Long> phoneNumbers;
+
 
             if (yellowPages.containsKey(lastName)) {
-                phoneNumbers = yellowPages.get(lastName);
+                yellowPages.get(lastName).add(phone);
             } else {
-                phoneNumbers = new HashSet<>();
+                HashSet<Long> phoneNumbers = new HashSet<>();
+                phoneNumbers.add(phone);
+                yellowPages.put(lastName, phoneNumbers);
             }
-            phoneNumbers.add(phone);
-            yellowPages.put(lastName, phoneNumbers);
         }
 
         HashSet<Long> get(String lastName) {
             return yellowPages.get(lastName);
         }
+
     }
 }
+
+
+
+//    void add(String lastName, Long phone) {
+//        HashSet<Long> phoneNumbers;
+//
+//        if (yellowPages.containsKey(lastName)) {
+//            phoneNumbers = yellowPages.get(lastName);
+//        } else {
+//            phoneNumbers = new HashSet<>();
+//        }
+//        phoneNumbers.add(phone);
+//        yellowPages.put(lastName, phoneNumbers);
+//    }
 
 
 

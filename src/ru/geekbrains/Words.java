@@ -27,23 +27,17 @@ public class Words {
 
     Random random = new Random();
         System.out.println();
-
     HashMap<String, Integer> randomWords = new HashMap<>();
-
         for (int i = 0; i < 20; i++) {
         String key = "слово" + random.nextInt(10);
         Integer res = randomWords.get(key);
         randomWords.put(key, res == null ? 1 : res + 1);
-
     }
-
         Set<Map.Entry<String, Integer>> allOfTheWords = randomWords.entrySet();
-
         String uniqueWords = "Уникальный список: ";
 
         for(Map.Entry<String, Integer> unique: allOfTheWords)
         {
-
             String key = unique.getKey();
             uniqueWords+=key+" ";
             Integer value = unique.getValue();
